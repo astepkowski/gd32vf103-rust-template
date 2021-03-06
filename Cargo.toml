@@ -1,0 +1,25 @@
+[package]
+authors = ["{{authors}}"]
+edition = "2018"
+readme = "README.md"
+name = "{{project-name}}"
+version = "0.1.0"
+
+[dependencies]
+riscv = "0.6.0"
+riscv-rt = "0.8.0"
+panic-halt = "0.2.0"
+
+[dependencies.gd32vf103xx-hal]
+version = "0.4.0"
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "{{project-name}}"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
